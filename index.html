@@ -8,25 +8,30 @@
     <link rel='stylesheet' type='text/css' media ='screen' href ='index.css' /> 
 </head>
 <body>
-   <h1>Spellbook</h1>
+    <img src='skull.png' id='skull' alt=''>
+    <img src='quill.png' id='quill' alt=''>
+
+
+    <h1>Spellbook</h1>
 
 <form>
+    <div>
     <input
       type='text'
       name='spellName'
+      placeholder='Enter a spell name'
       autofocus
     >
     <button type='submit'>Add</button>
+    </div>
 </form>
 
-<div id='spells'>
-
-</div>
+<main>
+    <ul id='spells'></ul>
+</main>
 
 <script src="index.js"></script>
-
 </body>
-
 </html>
 
    
