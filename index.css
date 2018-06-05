@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Homemade+Apple|UnifrakturCook:700');
 
 body {
-    font-family: 'Open Sans', sans-serif;
     background: url(wood.jpg);
     background-size: cover;
     background-attachment: fixed;
@@ -9,6 +8,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
 img#skull {
     position: absolute;
@@ -20,12 +20,12 @@ img#skull {
 
 img#quill {
     position: absolute;
-    tp[:calc(30vw + 40px);
+    top:calc(30vw + 40px);
     right: 3vw;
     width: 20vw
 }
 
-h1{
+h1 {
     font-family: UnifrakturCook, serif;
     margin-left: 10vw;
     margin-top: 5vw;
@@ -47,7 +47,7 @@ form > div {
 }
 
 input[type='text'] {
-    flex: 1 1 0px
+    flex: 1 1 0px;
     height: auto;
     min-width: 0;
     display: block;
@@ -74,7 +74,7 @@ input[type='text']:focus {
 }
 
 .buttonWrapper {
-    paddding-top: 0;
+    padding-top: 0;
     padding-bottom: 0;
     text-align: center;
     display: flex;
