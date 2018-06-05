@@ -1,13 +1,15 @@
-const button = document.querySelector('button')
+const form = document.querySelector('form')
 
-const sayContents = function() {
-  const heading = document.querySelector('h1')
-  heading.textContent = 'Heading has been changed'
+const changeHeading = function(ev) {
+  ev.preventDefault()
+  
+  const f = ev.target
+  const spellName = f.spellName.value
+
+const spellsDiv = document.querySelector('#spells')
+spellsDiv.innerHTML += '<p>${spellName}</p>'
+
+f.reset()
 }
 
-button.addEventListener('click', sayContents)
-Heading.innerText = "New Heading"
-
-sayContents()
-alert(x)
-
+form.addEventListener('submit', changeHeading)
