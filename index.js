@@ -51,12 +51,19 @@ const app = {
 
     f.reset()
   },
-
-    const spells = ['spell1', 'spell2', 'spell3']
-
-    spells.push('spell 4')
-
-    console.log(spells)
 }
+
+  var spells = {
+    
+    init: function (spellName, level) {
+        this.spellName = spellName;
+        this.level = level;
+    },
+    
+    describe: function () {
+        var description = this.spellName + " (" + this.level + ")";
+        return description;
+    }
+  }  
 
 app.init()
