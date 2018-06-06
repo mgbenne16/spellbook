@@ -1,15 +1,56 @@
-const form = document.querySelector('form')
+const app = {
+  init: function() {
+    const form = document.querySelector('form')
+    form.addEventListener('submit', ev => {
+      this.handleSubmit(ev)
+    })
+  },
 
-const changeHeading = function(ev) {
-  ev.preventDefault()
-  
-  const f = ev.target
-  const spellName = f.spellName.value
+  renderProperty: function(name, value) {
+    const el = document.createElement('span')
+    el.textContent = value
+    el.classList.add(name)
+    return el
+  },
 
-const spellsDiv = document.querySelector('#spells')
-spellsDiv.innerHTML += `<li>${spellName}</li>`
+  renderItem: function(spell) {
 
-f.reset()
+    properties = Object.keys(spell)
+
+
+
+    const childElements = properties.map(property => {
+      return this.renderProperty(property, spell[property])
+    })
+
+    const item = document.createElement('li')
+    item.classList.add('spell')
+
+
+    childElements.forEach(el => {
+      item.appendChild(el)
+    })
+
+    return item
+  },
+
+  handleSubmit: function(ev) {
+    ev.preventDefault()
+
+    const f = ev.target
+
+    const spell = {
+      name: f.spellName.value,
+      level: f.level.value
+    }
+
+    const item = this.renderItem(spell)
+
+    const list = document.querySelector('#spells')
+    list.appendChild(item)
+
+    f.reset()
+  },
 }
 
-form.addEventListener('submit', changeHeading)
+app.init()

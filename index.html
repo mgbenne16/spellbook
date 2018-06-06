@@ -10,9 +10,7 @@
 <body>
     <img src='skull.png' id='skull' alt=''/>
     <img src='quill.png' id='quill' alt=''/>
-    <video src='IMG_4824.MOV' width="320" height="240" controls>
-            Video Not Supported
-        </video>
+
 
     <h1>Spellbook</h1>
 
@@ -24,8 +22,16 @@
       placeholder='Enter a spell name'
       autofocus
     >
+    <input
+      type='number'
+      name='level'
+      placeholder='Level'
+      class-'small'
+      min='1'
+      max='20'
+    >
     <button type='submit'>Add</button>
-    </div>
+  </div>
 </form>
 
 <main>
