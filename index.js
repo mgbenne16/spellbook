@@ -51,6 +51,12 @@ const app = {
 
     f.reset()
   },
+
+    const spells = ['spell1', 'spell2', 'spell3']
+
+    spells.push('spell 4')
+
+    console.log(spells)
 }
 
 app.init()
