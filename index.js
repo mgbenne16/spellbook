@@ -1,5 +1,8 @@
 const app = {
   init: function() {
+    this.spells = []
+    this.template = document.querySelector('.spell.template')
+
     const form = document.querySelector('form')
     form.addEventListener('submit', ev => {
       this.handleSubmit(ev)
@@ -10,28 +13,44 @@ const app = {
     const el = document.createElement('span')
     el.textContent = value
     el.classList.add(name)
+    el.setAttribute('title', value)
     return el
   },
 
   renderItem: function(spell) {
+  const item = this.template.cloneNode(true)
+  item.classList.remove('template')
 
-    properties = Object.keys(spell)
+  // ['name', 'level', etc.] 
+  properties = Object.keys(spell)
 
+  
+  properties.forEach(property => {
+    const el = item.querySelector(`.${property}`)
+    el.textContent = spell[property]
+    el.setAttribute('title', spell[property])
+  })
 
-
-    const childElements = properties.map(property => {
-      return this.renderProperty(property, spell[property])
-    })
-
-    const item = document.createElement('li')
-    item.classList.add('spell')
-
-
-    childElements.forEach(el => {
-      item.appendChild(el)
-    })
+    
+  item
+    .querySelector('button.delete')
+      .addEventListener(
+        'click',
+        this.removeSpell.bind(this, spell)
+      )
 
     return item
+  },
+
+  removeSpell: function(spell, ev) {
+
+    const button = ev.target
+    const item = button.closest('.spell')
+    item.parentNode.removeChild(item)
+
+
+    const i = this.spells.indexOf(spell)
+    this.spells.splice(i, 1)
   },
 
   handleSubmit: function(ev) {
@@ -43,6 +62,7 @@ const app = {
       name: f.spellName.value,
       level: f.level.value
     }
+    this.spells.push(spell)
 
     const item = this.renderItem(spell)
 
@@ -50,20 +70,8 @@ const app = {
     list.appendChild(item)
 
     f.reset()
+    f.spellName.focus()
   },
 }
-
-  var spells = {
-    
-    init: function (spellName, level) {
-        this.spellName = spellName;
-        this.level = level;
-    },
-    
-    describe: function () {
-        var description = this.spellName + " (" + this.level + ")";
-        return description;
-    }
-  }  
 
 app.init()
